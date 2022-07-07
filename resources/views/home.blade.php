@@ -47,7 +47,8 @@
                                     <td>#00{{$campeonato->id}}</td> 
                                     <td>{{$campeonato->campeonato}}</td>  
                                     <td>
-                                        <button type="submit" class="button btnEditarCampeonato" value="{{$campeonato->id}}" id="btnEditarCampeonato" 
+                                        <a href="{{ url('/sortearJogos') }}" type="button" class="button ">Voltar</a>
+                                        <button type="submit" class="button" value="{{$campeonato->id}}" id="btnJogos" 
                                             data-codigo="{{$campeonato->id}}" 
                                             data-campeonato="{{$campeonato->campeonato}}">
                                             <span >
@@ -177,6 +178,20 @@
                     $('#codigo').val(response.dados.id);
     
                 }
+        })
+    })
+    $('#btnJogos').click(function () {
+        console.log('aqui');
+        codigo = $(this).attr('data-codigo');
+
+        $.ajax({
+            type:'POST',
+            url: "/jogosSortear/" + codigo,
+            successo: function (response){
+                //$('#nome').val((response.dados.nome));
+                //$('#codigo').val(response.dados.id);
+
+            }
         })
     })
 </script>
