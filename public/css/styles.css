@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     vertical-align: baseline;
@@ -22,6 +22,42 @@
     border-radius: 3vh;
     border: 1px solid #c4c4c4;
     box-shadow: 5px 5px 5px #ebebeb;
+}
+.card-info.info{
+    background: #b8eef9;
+    color: #008099;
+    margin: 1rem;
+    padding: 0.5rem;
+    width: 30vh;
+    height: 5vh;
+}
+.card-info.penalt {
+    background: #FEE5A7;
+    color: #976D02;
+}
+.card-info.perdeu {
+    background: #FFB3B3;
+    color: #99000C;
+}
+
+.card-info.venceu {
+    background: #66cc6b;
+    color: #17821c;
+}
+.card-info.vice-vice {
+    border: 1px solid #976D02;
+    background: #e9d2a7;
+    color: #444336;
+}
+.card-info.vice {
+    border: 1px solid #976D02;
+    background: #9cb39d;
+    color: #364437;
+}
+.card-info.campeao {
+    border: 1px solid #976D02;
+    background: #fdff85;
+    color: #645d34;
 }
 .button{
     display: flex;
@@ -54,4 +90,24 @@
     color: #C5F9FF;
     margin: 8px;
     padding: 8px;
+}
+.column{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.row1{
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.red{
+    background: #ff0000;
 }
