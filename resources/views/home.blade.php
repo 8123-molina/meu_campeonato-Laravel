@@ -5,8 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Meu Campeonato</title>
-        <link href="./css/styles.css" rel="stylesheet">
-        <link href="./js/bootstrap.css" rel="stylesheet">
+        
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="js/bootstrap.css" rel="stylesheet">
 
     </head>
     <body>
@@ -32,7 +33,7 @@
             </div>
             <div class="column">
                 <div class="row box-card">
-                    <div class="col-md-4 card-info">
+                    <div class="col-md-4 box-card border">
                         <table id="tableCapeonato" class="table table-striped " >
                             <thead>
                                 <tr>
@@ -47,12 +48,18 @@
                                     <td>#00{{$campeonato->id}}</td> 
                                     <td>{{$campeonato->campeonato}}</td>  
                                     <td>
-                                        <a href="{{ url('/sortearJogos') }}" type="button" class="button ">Voltar</a>
-                                        <button type="submit" class="button" value="{{$campeonato->id}}" id="btnJogos" 
+                                        <button type="submit" class="button <?= !empty($campeonato->campeao) ? 'disabled' : ''?>" value="{{$campeonato->id}}" <?= !empty($campeonato->jogos) ? 'disabled' : ''?> id="btnGerarJogos" title="<?= !empty($campeonato->jogos) ? 'Campeonato já possui jogos' : 'Gerar jogos para este campeonato'?>" 
                                             data-codigo="{{$campeonato->id}}" 
                                             data-campeonato="{{$campeonato->campeonato}}">
                                             <span >
-                                                Visualizar
+                                                Gerar Jogos
+                                            </span>
+                                        </button>
+                                        <button type="submit" class="button" value="{{$campeonato->id}}" id="btnJogos" title="Exibir jogos do campeonato"
+                                            data-codigo="{{$campeonato->id}}" 
+                                            data-campeonato="{{$campeonato->campeonato}}">
+                                            <span >
+                                                Ver Jogos
                                             </span>
                                         </button>
                                     </td>  
@@ -61,7 +68,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-4 card-info">
+                    <div class="col-md-4 box-card border">
                         <table id="tableTime" class="table table-striped " >
                             <thead>
                                 <tr>
@@ -141,58 +148,67 @@
         </div>
 
     </body>
-<script src={{ asset('./js/bootstrap-icons.svg') }} rel="styleshet"></script>
-<script src={{ asset('./js/jquery.js') }} rel="styleshet"></script>
-<script src={{ asset('./js/bootstrap.js') }} rel="styleshet"></script> 
-<script type="text/javascript">
+    <script src="{{ asset('css/styles.css') }}" rel="styleshet"></script>
+    <script src="{{ asset('js/jquery.js') }}" rel="styleshet"></script>
+    <script src="{{ asset('js/bootstrap.js') }}" rel="styleshet"></script> 
+    <script type="text/javascript">
 
-    $(document).ready(function () {
-        $('.table').DataTable();
-    });
-    $('.btnEditarCampeonato').click(function () {
-        $('#inserirCampeonatoModal').modal('show');
+        $('.btnEditarCampeonato').click(function () {
+            $('#inserirCampeonatoModal').modal('show');
+                codigo = $(this).attr('data-codigo');
+                console.log('aqui');
+        
+                $.ajax({
+                    type:'get',
+                    url: "/getCampeonato/" + codigo,
+                    successo: function (response){
+                        $('#campeonato').val((response.dados.campeonato));
+                        $('#codigo').val(response.dados.id);
+        
+                    }
+            })
+        })
+
+        $('.btnEditarTime').click(function () {
+            $('#inserirTimeModal').modal('show');
+                codigo = $(this).attr('data-codigo');
+                console.log('aqui');
+        
+                $.ajax({
+                    type:'get',
+                    url: "/getTime/" + codigo,
+                    successo: function (response){
+                        $('#nome').val((response.dados.nome));
+                        $('#codigo').val(response.dados.id);
+        
+                    }
+            })
+        })
+
+        $('#btnJogos').click(function () {
             codigo = $(this).attr('data-codigo');
-            console.log('aqui');
-    
-            $.ajax({
-                type:'GET',
-                url: "/getCampeonato/" + codigo,
-                successo: function (response){
-                    $('#campeonato').val((response.dados.campeonato));
-                    $('#codigo').val(response.dados.id);
-    
-                }
-        })
-    })
 
-    $('.btnEditarTime').click(function () {
-        $('#inserirTimeModal').modal('show');
+            $.ajax({
+                type:'get',
+                url: "jogos/" + codigo,
+                successo: function (response){
+
+                }
+            })
+        })
+
+        $('#btnGerarJogos').click(function () {
             codigo = $(this).attr('data-codigo');
-            console.log('aqui');
-    
+            console.log("gera jogos",codigo);
+
             $.ajax({
-                type:'GET',
-                url: "/getTime/" + codigo,
+                type:'get',
+                url: "createPartida/" + codigo,
+                //data:{ _token:"{{ csrf_token() }}" },
                 successo: function (response){
-                    $('#nome').val((response.dados.nome));
-                    $('#codigo').val(response.dados.id);
-    
+
                 }
+            })
         })
-    })
-    $('#btnJogos').click(function () {
-        console.log('aqui');
-        codigo = $(this).attr('data-codigo');
-
-        $.ajax({
-            type:'POST',
-            url: "/jogosSortear/" + codigo,
-            successo: function (response){
-                //$('#nome').val((response.dados.nome));
-                //$('#codigo').val(response.dados.id);
-
-            }
-        })
-    })
-</script>
+    </script>
 </html>
