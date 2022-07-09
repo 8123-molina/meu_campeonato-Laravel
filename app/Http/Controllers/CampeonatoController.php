@@ -23,10 +23,21 @@ class CampeonatoController extends Controller
     /**
     * Buscar dados especifico do banco de dados e retornar para a view
     */
-    public function get($id){
- 
+    public function getJogos($id){
+        
         $campeonato = Campeonato::find($id);
-        return response()->json($campeonato);
+
+        return view('jogos',[
+            "campeonato"            => $campeonato,
+            "jogosQuartasFinais"    => json_decode($campeonato['jogosQuartasFinais']),
+            "jogosSemiFinais"       => json_decode($campeonato['jogosSemiFinais']),
+            "semiFinais"            => json_decode($campeonato['semiFinais']),
+            "jogosFinal"            => json_decode($campeonato['jogosFinal']),
+            "tCampeao"              => json_decode($campeonato['tCampeao']),
+            "viceCampeao"           => json_decode($campeonato['viceCampeao']),
+            "campeao"               => json_decode($campeonato['campeao'])
+            
+        ]);
     }
 
     public function create(Request $request){
