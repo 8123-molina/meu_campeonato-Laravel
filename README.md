@@ -1,50 +1,89 @@
-"# meu_campeonato-Laravel" 
-Para executar este projeto é necessario ter instalado em sua maquina Python, XAMPp, algun gerenciador de SQl exemplo MySQL( já incluso no Xampp) ou HeidiSQL e Composer. 
+# Meu campeonato
+## Este projeto foi criado para simular uma campeonato que componha 8 competidores iniciais e finaliza com 1 Campeão e também colocação de 2° e 3° lugar.
+### Segue um telas demonstrativas ( o intuito foi focar na lógica e não na parte de visualização).
+
+![127 0 0 1_laravel_meu_campeonato-Laravel_public_](https://user-images.githubusercontent.com/60671190/178127488-833c93c6-e66d-4ce4-b79d-e887b512b2df.png)
+![127 0 0 1_laravel_meu_campeonato-Laravel_public_jogos_1](https://user-images.githubusercontent.com/60671190/178127489-fc63786e-8445-4d1a-bdeb-11365432392b.png)
 
 
-Para instalar o Xampp.
-Siga os passsos confore descrito pelo distribuidor.
+## Instalação
+
+Para executar este projeto é necessario ter instalado em sua maquina os software Python, XAMPP, Composer e NPM algum manipulador de banco de dados exemplo MySQL( já incluso no Xampp) ou HeidiSQL.
+
+## Caso não possua os itens acima segue meios para instalação.
+
+- Xampp
+> Para instalar o Xampp.
+Siga os passsos conforme descrito pelo distribuidor.
 Segue link Xamp:
     -https://www.apachefriends.org/pt_br/download.html
 Ou busque no Google por Xamp.
 
-Para instalar o HeidiSQL.
-Siga os passsos confore descrito pelo distribuidor.
+- HeidiSQL
+> Para instalar o HeidiSQL.
+Siga os passsos conforme descrito pelo distribuidor.
 Segue link HeidiSQL:
     -https://www.heidisql.com/download.php
 Ou busque no Google por HeidiSQL.
 
-Para instalar o Python.
-Siga os passsos confore descrito pelo distribuidor.
+- Python
+> Para instalar o Python.
+Siga os passsos conforme descrito pelo distribuidor.
 Segue link Python:
     -https://www.python.org/
 Ou busque no Google por Python.
 
-Feito isso vamos a instalação dos gerenciadores e bibliotecas
 
-##Instalação gerenciadores Composer
---Caso não tenha instalado em sua maquina o gerenciador de depencia composer, siga os passo conforme descrito pelo distribuidor
+- Composer
+> Para instalar do Composer
+Siga os passo conforme descrito pelo distribuidor
 Segue link Composer:
  -https://getcomposer.org/
 
--- Caso não tenha instalado em sua maquina instado o gerenciador de depencia NPM, siga os passo conforme descrito pelo distribuidor
-Segue link Composer:
- -https://docs.npmjs.com/
+## Caso possua os itens acima siga os passos abaixo descritos. 
+> Dentro da pas raiz do projeto executa os comandos
+ > * composer install
+ > * npm install
+
+## Caso possua os itens acima segue meios para execução. 
+> Dentro da pasta raiz do projeto executa os comandos
+> * composer install
+> * npm install
 
 
-##Instalando bibliotecas Jquery e Bootstrap
-Atenção para instalar corretamente as bibliotecas e necessario comentar a linha que contem a rota em webpack.mix.jon que aponta para os arquivos e ir descomentando conforme for instalando as bibliotecas.
+## Instalando bibliotecas Jquery e Bootstrap
+> Atenção para instalar corretamente as bibliotecas e necessario comentar a linha que contem a rota em webpack.mix.jon que aponta para os arquivos e ir descomentando conforme for instalando as bibliotecas.
+> Observação: procedimento para garantir o funcionamento correto.
 
-#Instalando biblioteca JQUERY
-abra o terminal dentro da pasta raiz do projeto exemplo: c://src/meu_projeto/
+## Instalando biblioteca JQUERY
+Abra o terminal dentro da pasta raiz do projeto exemplo: c://src/meu_projeto/
 
-execute os comando 
-npm install jquery
-npm run dev
+>Execute os comandos 
+> * npm install jquery
+> * npm run dev
 
-#Instalando biblioteca Bootstrap
-abra o terminal dentro da pasta raiz do projeto exemplo: c://src/meu_projeto/
+## Instalando biblioteca Bootstrap
+Abra o terminal dentro da pasta raiz do projeto exemplo: c://src/meu_projeto/
 
-execute o comando 
-npm install Bootstrap
-npm run dev
+> Execute os comandos 
+> * npm install Bootstrap
+> * npm run dev
+
+## Será necessário gerar um arquivo Python com os codigos decritos e salvar na pasta c://src com nome teste.py
+```
+ import random
+ print(random.randrange(0, 8, 1))
+ print(random.randrange(0, 8, 1))
+```
+
+## Criando banco de dados
+
+* Em seu gerenciador de banco de dados utilize o comando:
+```
+ CREATE DATABASE meu_campeonato;
+```
+## Após finalizao os procedimentos acima vamos abra o projeto em um editor de codigo de sua preferência abra o terminal na pasta raiz do projeto e execute os comandos:
+
+* Em seu gerenciador de banco de dados utilize o comando:
+> * Execute os comandos
+> * php artisan migrate
