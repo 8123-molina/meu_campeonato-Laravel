@@ -34,6 +34,10 @@
             <div class="column">
                 <div class="row box-card">
                     <div class="col-md-4 box-card border">
+                                
+                        <div class="card-info campeao">
+                            <label>Campeonato</label>
+                        </div>
                         <table id="tableCapeonato" class="table table-striped " >
                             <thead>
                                 <tr>
@@ -48,19 +52,19 @@
                                     <td>#00{{$campeonato->id}}</td> 
                                     <td>{{$campeonato->campeonato}}</td>  
                                     <td>
-                                        <button type="submit" class="button <?= !empty($campeonato->campeao) ? 'disabled' : ''?>" value="{{$campeonato->id}}" <?= !empty($campeonato->jogos) ? 'disabled' : ''?> id="btnGerarJogos" title="<?= !empty($campeonato->jogos) ? 'Campeonato já possui jogos' : 'Gerar jogos para este campeonato'?>" 
+                                    <button type="submit" class="btnGerarJogos button <?= !empty($campeonato->campeao) ? 'disabled' : ''?>" value="{{$campeonato->id}}" <?= !empty($campeonato->campeao) ? 'disabled' : ''?> id="btnGerarJogos" title="<?= !empty($campeonato->campeao) ? 'Campeonato já possui jogos' : 'Gerar jogos para este campeonato'?>" 
                                             data-codigo="{{$campeonato->id}}" 
                                             data-campeonato="{{$campeonato->campeonato}}">
                                             <span >
-                                                Gerar Jogos
+                                                Gerar
                                             </span>
                                         </button>
-                                        <button type="submit" class="button" value="{{$campeonato->id}}" id="btnJogos" title="Exibir jogos do campeonato"
+                                        <button type="submit" class="block button <?= !empty($campeonato->campeao) ? '' : 'disabled'?>" value="{{$campeonato->id}}" <?= !empty($campeonato->campeao) ? '' : 'disabled'?> id="btnJogos"  title="<?= !empty($campeonato->campeao) ? 'Exibir jogos do campeonato' : 'Campeonato não possui jogos' ?>"
                                             data-codigo="{{$campeonato->id}}" 
                                             data-campeonato="{{$campeonato->campeonato}}">
-                                            <span >
-                                                Ver Jogos
-                                            </span>
+                                            <a style="display:<?= !empty($campeonato->campeao) ? '' : 'none'?>" href="jogos/<?= $campeonato->id ?>">
+                                                Visualizar
+                                            </a>
                                         </button>
                                     </td>  
                                 </tr>
@@ -69,6 +73,9 @@
                         </table>
                     </div>
                     <div class="col-md-4 box-card border">
+                        <div class="card-info campeao">
+                            <label>Times inscritos</label>
+                        </div>
                         <table id="tableTime" class="table table-striped " >
                             <thead>
                                 <tr>
@@ -91,7 +98,7 @@
                                         <form action="{" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="button">
+                                            <button type="submit" class="button ">
                                                 <span style="cursor: pointer">
                                                     Excluir
                                                 </span>
@@ -184,20 +191,7 @@
                     }
             })
         })
-
-        $('#btnJogos').click(function () {
-            codigo = $(this).attr('data-codigo');
-
-            $.ajax({
-                type:'get',
-                url: "jogos/" + codigo,
-                successo: function (response){
-
-                }
-            })
-        })
-
-        $('#btnGerarJogos').click(function () {
+        $('.btnGerarJogos').click(function () {
             codigo = $(this).attr('data-codigo');
             console.log("gera jogos",codigo);
 

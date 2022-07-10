@@ -20,7 +20,7 @@
             </div>
             </div>
         </div>
-        <a class="button left" href="{{'./home'}}">Voltar</a>
+        <a class="button " href="{{ url('/')}}">Voltar</a>
         <div class=" card-info wrap">
             <div class="card-info column" id="quartasFinais">
                 <div class="card-info info">
