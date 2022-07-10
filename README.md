@@ -1,9 +1,17 @@
 # Meu campeonato
 ## Este projeto foi criado para simular uma campeonato que componha 8 competidores iniciais e finaliza com 1 Campeão e também colocação de 2° e 3° lugar.
-### Segue um telas demonstrativas ( o intuito foi focar na lógica e não na parte de visualização).
+### Segue um telas demonstrativas (o intuito foi focar na lógica e não na parte de visualização).
 
+* Versão Web
+```
 ![127 0 0 1_laravel_meu_campeonato-Laravel_public_](https://user-images.githubusercontent.com/60671190/178127488-833c93c6-e66d-4ce4-b79d-e887b512b2df.png)
 ![127 0 0 1_laravel_meu_campeonato-Laravel_public_jogos_1](https://user-images.githubusercontent.com/60671190/178127489-fc63786e-8445-4d1a-bdeb-11365432392b.png)
+```
+* Versão Responsive mobile
+```
+![127 0 0 1_laravel_meu_campeonato-Laravel_public_ mobile](https://user-images.githubusercontent.com/60671190/178128306-79be3035-5876-4c89-ba71-7099926ed490.png)
+![127 0 0 1_laravel_meu_campeonato-Laravel_public_jogos_1 mobile](https://user-images.githubusercontent.com/60671190/178128302-0b43f7ec-32e4-4526-a7e6-9260e0f5730a.png)
+```
 
 
 ## Instalação
