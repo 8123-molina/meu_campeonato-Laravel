@@ -16,9 +16,13 @@ class CreateCampeonatosTable extends Migration
         Schema::create('campeonatos', function (Blueprint $table) {
             $table->id();
             $table->string('campeonato');
-            $table->string('campeao')->nullable();
-            $table->string('vice_campeao')->nullable();
-            $table->string('terceiro_campeao')->nullable();
+            $table->json('campeao')->nullable();
+            $table->json('tCampeao')->nullable();
+            $table->json('viceCampeao')->nullable();
+            $table->json('jogosQuartasFinais')->nullable();
+            $table->json('jogosSemiFinais')->nullable();
+            $table->json('semiFinais')->nullable();
+            $table->json('jogosFinal')->nullable();
             $table->timestamps();
         });
     }
@@ -31,9 +35,14 @@ class CreateCampeonatosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('campeonatos', function (Blueprint $table) {
-            $table->string('campeao');
-            $table->string('vice_campeao');
-            $table->string('terceiro_campeao');
+            $table->dropColumn('campeao');
+            $table->dropColumn('campeao');
+            $table->dropColumn('tCampeao');
+            $table->dropColumn('viceCampeao');
+            $table->dropColumn('jogosQuartasFinais');
+            $table->dropColumn('jogosSemiFinais');
+            $table->dropColumn('semiFinais');
+            $table->dropColumn('jogosFinal');
         });
     }
 }
