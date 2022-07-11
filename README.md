@@ -1,5 +1,5 @@
 # Meu campeonato
-## Este projeto foi criado para simular uma campeonato que componha 8 competidores iniciais e finaliza com 1 Campeão e também colocação de 2° e 3° lugar.
+## Este projeto foi criado para simular uma campeonato que com 8 competidores participantes iniciais e finaliza com 1 Campeão, 2° e 3° lugar.
 ### Segue um telas demonstrativas (o intuito foi focar na lógica e não na parte de visualização).
 
 * Versão Web
